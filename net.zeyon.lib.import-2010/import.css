@@ -1,0 +1,204 @@
+html, body, #body {
+  width: 100%;
+}
+
+
+#page {
+  margin-right: 221px;
+  padding: 10px 10px 0 10px;
+}
+
+.linkBlue {
+  color: #3079ed;
+}
+
+.colorWarning {
+  color: #f0ad4e;
+}
+
+.cursorPointer {
+  cursor: pointer;
+}
+
+
+.gxUiBlendLoader {
+  background: url('@{imgpath}/ui/gxUiBlendLoader.gif') no-repeat center;
+}
+
+
+
+.feedMsg {
+  border: 1px solid;
+  border-color: rgba(0,0,0,0.15);
+  background: #fff;
+  border-radius: 3px;
+  margin-bottom: 7px;
+}
+
+.feedMsg i {
+  display: inline-block;
+  font-size: 20px;
+  text-align: center;
+  padding: 7px 10px;
+  margin-right: 10px;
+  color: white;
+}
+
+.feedMsg .txt {
+  font-size: 14px;
+}
+
+.feedMsg.error i {
+  background-color: #B70004;
+}
+.feedMsg.warning i {
+  background-color: #f0ad4e;
+}
+.feedMsg.dublicate i {
+  background-color: #588ED0;
+}
+.feedMsg.success i {
+  background-color: #5cb85c;
+}
+
+
+
+.importSourceMenu>menuitem{
+  display: inline-block;
+  width: 100px;
+  height: 120px;
+  transition: all .3s;
+  border-radius: 9px;
+  vertical-align: top;
+}
+.importSourceMenu>menuitem:hover{
+  cursor: pointer;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, .2);
+  text-decoration: underline;
+}
+
+.importInfoText {
+  font-size: 12px;
+}
+
+
+
+.importTable {
+  overflow-x: auto;
+}
+
+
+
+.importTable .dublicate td:first-child,
+.importTable .dublicate + .message td:first-child {
+  background-color: #588ED0;
+}
+.importTable .dublicate + .message td:nth-child(2) {
+  color: #588ED0;
+  color: white;
+}
+
+
+
+.importTable .warning td:first-child,
+.importTable .warning + .message td:first-child {
+  background-color: #f0ad4e;
+  color: white;
+}
+.importTable .warning + .message td:nth-child(2) {
+  color: #E89700;
+}
+
+
+
+.importTable .error td:first-child,
+.importTable .error + .message td:first-child {
+  background-color: #B70004;
+  color: white;
+}
+.importTable .error + .message td:nth-child(2) {
+  color: #B70004;
+}
+
+
+
+.importTable td {
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+
+.importTable tr {
+  display: none;
+}
+
+.importTable tr.tbl_head {
+  display: table-row;
+}
+
+
+
+.importTable.creations tr.create, .importTable.creations tr.create + .message {
+  display: table-row;
+}
+.importTable.warnings tr.warning, .importTable.warnings tr.warning + .message {
+  display: table-row;
+}
+.importTable.dublicates tr.dublicate, .importTable.dublicates tr.dublicate + .message {
+  display: table-row;
+}
+.importTable.errors tr.error, .importTable.errors tr.error + .message {
+  display: table-row;
+}
+.importTable.unresolvedCountries tr, .importTable.unresolvedCountries tr + .message {
+  display: table-row;
+}
+
+
+.importTable tr.searchTxtNotFound.searchTxtNotFound,
+.importTable tr.searchTxtNotFound.searchTxtNotFound + .message {
+  display: none;
+}
+
+
+
+.pop {
+  box-shadow:0 1px 3px rgba(0, 0, 0, .3);
+  border-radius: 5px;
+
+}
+
+.pop>aside {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  z-index: 9;
+  background: rgba(0,0,0,0.5);
+  border-radius: 5px;
+  padding: 7px;
+}
+
+.pop.act {
+  opacity:.5;
+  z-index:6;
+}
+
+.pop>aside>section {
+  padding: 20px;
+  background-color: white;
+}
+
+.importSuccess {
+  color: #468847;
+  font-weigth: bolder;
+  font-size: 20px;
+  padding: 20px;
+}
+
+.disabled .nav *, .disabled .nav *:hover {
+  color: gray !important;
+  background: transparent !important;
+  border-color: transparent;
+  cursor: default;
+}

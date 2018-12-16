@@ -1,0 +1,49 @@
+html {
+	height: 100%;
+}
+body {
+	height: 100%;
+}
+.tbl_row:nth-child(2n) {
+	background: #fff;
+}
+.tbl_row:nth-child(2n+1) {
+	background: #fafafa;
+}
+.tbl_row {
+	border-top-color: transparent;
+}
+.tbl_row:hover {
+	border-top: 1px solid #d0d4da;
+	border-bottom-color: transparent;
+	background: #E5E9F0;
+}
+.tbl {
+	width:100%;
+}
+.tbl_head {
+	background:#f5f5f5;
+	border-bottom:1px solid #d0d0d0;
+	font-weight:bold;
+	font-size:12px;
+}
+.tbl td.input {
+	padding: 2px 8px;
+}
+.tbl td > input:not([type]) {
+	text-align: center;
+	max-width: 10em;
+	width: 5em;
+	border: 1px dashed rgba(0,0,0,0.25);
+	background: 0;
+	border-radius: .18em;
+	margin-right: 4px;
+	padding: 2px;
+	box-shadow: unset;
+}
+.tbl_row>td, .tbl_head>th {
+	padding: 5px 8px;
+}
+.tbl_head>th {
+	color: #484848;
+}

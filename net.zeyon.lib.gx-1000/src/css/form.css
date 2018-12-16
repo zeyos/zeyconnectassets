@@ -1,0 +1,243 @@
+
+.gxFormContainer table {
+	width: 100%;
+}
+
+.gxFormContainer .gxFormCell,
+.gxFormContainer .gxFormLabel,
+.gxFormContainer .gxFormEdit {
+	color: #959595;
+	font-size: 8pt;
+	padding: 6px 7px;
+	width: 50%;
+	border-bottom: 1px solid #D8D8D8;
+	border-right: 1px solid #D8D8D8;
+	border-top: 1px solid #F2F2F2;
+	border-left: 1px solid #F2F2F2;
+}
+
+.gxFormHead {
+	background: -moz-linear-gradient(top, rgb(150,200,225), rgb(105,152,180));
+	background: -webkit-gradient(linear,left top,left bottom,from(rgb(125,175,200)),to(rgb(105,152,180)));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6998B4', endColorstr='#484848');
+	padding: 5px 15px;
+	box-shadow: #000 1px 1px 3px;
+	-webkit-box-shadow: #000 1px 1px 3px;
+	-moz-box-shadow: #000 1px 0px 1px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+
+.gxFormHead table {
+	color: #EEE;
+	font-size: 8pt;
+	font-weight: bold;
+	text-shadow: 0px -1px 1px #333;
+}
+
+.gxFormName, .gxFormName table {
+	padding: 13px 15px;
+	color: #455467;
+	font-size: 13pt;
+	font-weight: bold;
+	text-shadow: 0px 0px 0px #333;
+	border-bottom: 1px solid #D6D6D8;
+	background-color: #FFF;
+}
+
+.gxFormDescription {
+	padding: 9px 13px;
+	color: #959595;
+	font-size: 8pt;
+	font-weight: bold;
+	background-color: #FFF;
+	border-bottom: 1px solid #D6D6D8;
+}
+
+.gxFormDescription .labelArrow {
+	background: url(../img/ria/icoExpandArrow.png) no-repeat right center;
+}
+
+.gxFormButtons {
+	padding: 6px;
+	text-align: center;
+}
+
+.gxFormSelect,
+.gxFormInput {
+	padding: 4px;
+	font-size: 13px;
+	line-height: 18px;
+	color: #808080;
+	border: 1px solid #ccc;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.gxFormLabel {
+	text-align: right;
+}
+
+.gxFormIndicator {
+
+}
+.gxFormContainer .gxFormLine.gxFormError td {
+	color: red !important;
+}
+.gxFormError input {
+	border-color: #EE5F5B;
+}
+
+/*****************************
+ * === Advanced Select styles ===
+ *****************************/
+
+.gxFormSelectInputText {
+	padding-left: 18px;
+	background: #FFF url(../img/com/icoSelectExpand.gif) no-repeat center left;
+}
+
+.gxFormSelectInputArea {
+	margin: 0px;
+	font-family: monospace;
+	font-size: 13px;
+	font-weight: 400;
+	font-style: normal;
+	padding-left: 18px;
+	background: #FFF url(../img/com/icoSelectExpand.gif) no-repeat left top;
+}
+
+.gxFormSelectUl {
+	list-style: none inside;
+	padding: 4px;
+	margin: 0px;
+	background: #FFF;
+	border: 1px solid #999;
+	overflow-y: scroll;
+	text-align: left;
+	color: #808080;
+}
+.gxFormSelectLi {
+	padding: 0px 5px;
+	cursor: pointer;
+}
+.gxFormSelectLi:hover {
+	text-decoration: underline;
+}
+.gxFormSelectSelected {
+	background: #3399FF;
+	color: #FFF;
+}
+
+.gxFormSelectAccept {
+	width: 16px;
+	height: 16px;
+	left: 3px;
+	background: url(../img/com/icoAccept.png) no-repeat;
+	position: absolute;
+	cursor: pointer;
+}
+.gxFormSelectSearchImg {
+	width: 16px;
+	height: 16px;
+	background: url(../img/com/icoSearch.png) no-repeat;
+	cursor: pointer;
+	display: inline-block;
+	margin-left: 4px;
+	margin-top: 4px;
+	vertical-align: top;
+}
+
+
+/*****************************
+ * === gx.form.Button ===
+ *****************************/
+
+.gxFormButton {
+	cursor: pointer;
+	font-family: monospace;
+	margin: 0;
+	padding: 3px 3px;
+	color: #000;
+	text-shadow: 0px 1px 1px #FFF;
+
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 6px;
+	border-radius: 5px;
+	border: 1px solid #777 !important;
+
+	background: -moz-linear-gradient(top, rgb(255,255,255), rgb(220,220,220));
+	background: -webkit-gradient(linear,left top,left bottom,from(rgb(255,255,255)),to(rgb(220,220,220)));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#DCDCDC');
+	background: -o-linear-gradient(top, #A0E1F9, #13B5E7);
+
+
+}
+.gxFormButton:hover, .gxFormButton:active {
+	box-shadow: inset #999 0px 0px 5px 0px;
+	-webkit-box-shadow: inset #999 0px 0px 5px 0px;
+	-moz-box-shadow: inset #999 0px 0px 5px 0px;
+}
+.gxFormButton:active {
+	border: 1px solid #000 !important;
+}
+
+.gxFormButton.danger {
+	color: white;
+	text-shadow: 0px 1px 1px #000;
+	border: 1px solid #500;
+	background: -moz-linear-gradient(top, rgb(210,0,0), rgb(150,0,0));
+	background: -webkit-gradient(linear,left top,left bottom,from(rgb(255,255,255)),to(rgb(220,220,220)));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#DCDCDC');
+	background: -o-linear-gradient(top, #A0E1F9, #13B5E7);
+}
+.gxFormButton.danger:hover, .gxFormButton.danger:active {
+	box-shadow: inset #F00 0px 0px 3px 0px;
+	-webkit-box-shadow: inset #F00 0px 0px 3px 0px;
+	-moz-box-shadow: inset #F30 0px 0px 8px 0px;
+}
+
+.gxFormButton.primary {
+	color: white;
+	text-shadow: 0px 1px 1px #000;
+	border: 1px solid #500;
+	background: -moz-linear-gradient(top, rgb(0,152,218), rgb(0,101,205));
+	background: -webkit-gradient(linear,left top,left bottom,from(rgb(0,152,218)),to(rgb(0,101,205)));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0398DA', endColorstr='#0065CD');
+	background: -o-linear-gradient(top, #A0E1F9, #13B5E7);
+}
+.gxFormButton.primary:hover, .gxFormButton.primary:active {
+	box-shadow: inset #F00 0px 0px 3px 0px;
+	-webkit-box-shadow: inset #F00 0px 0px 3px 0px;
+	-moz-box-shadow: inset #00F 0px 0px 8px 0px;
+}
+
+.gxFormButton.success {
+	color: white;
+	text-shadow: 0px 1px 1px #000;
+	border: 1px solid #500;
+	background: -moz-linear-gradient(top, #62c462, #57a957);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #62c462), color-stop(100%, #57a957));
+	background: -o-linear-gradient(top, #62c462, #57a957);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#62c462', endColorstr='#57a957', GradientType=0);
+}
+.gxFormButton.success:hover, .gxFormButton.success:active {
+	box-shadow: inset #F00 0px 0px 3px 0px;
+	-webkit-box-shadow: inset #F00 0px 0px 3px 0px;
+	-moz-box-shadow: inset #040 0px 0px 8px 0px;
+}
+.gxFormButton.info {
+	color: white;
+	text-shadow: 0px 1px 1px #000;
+	border: 1px solid #500;
+	background: -moz-linear-gradient(top, #5bc0de, #339bb9);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #5bc0de), color-stop(100%, #339bb9));
+	background: linear-gradient(top, #5bc0de, #339bb9);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5bc0de', endColorstr='#339bb9', GradientType=0);
+}
+.gxFormButton.info:hover, .gxFormButton.info:active {
+	box-shadow: inset #F00 0px 0px 3px 0px;
+	-webkit-box-shadow: inset #F00 0px 0px 3px 0px;
+	-moz-box-shadow: inset #046 0px 0px 8px 0px;
+}

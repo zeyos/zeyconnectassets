@@ -1,0 +1,2181 @@
+/**
+ * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ *
+ * ATTENTION: This file is NOT for loading purpose. But only to copy these
+ * entities on demand to their individual own file like items.js.
+ *
+ * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ */
+{
+
+  /**
+   * #CATEGORIES
+   */
+  "categories": {
+    "iconName": "",
+    "modelName": "categories",
+
+    "defaultTitleFieldName": "name",
+    "defaultOrderField": "name",
+    "defaultOrderType": "asc", // asc
+
+    "fields": {},
+
+    "constraints": {
+      "name": "inherit",
+    },
+
+    "detailSelectFields": [],
+
+    "selectJoins": {},
+
+    "detailDisplayFields": [],
+
+    "listSelectFields": [
+      "name",
+    ],
+
+    "listDisplayFields": [
+      "name",
+    ]
+  },
+
+  /**
+   * #TAGS
+   */
+  "tags": {
+    "iconName": "",
+    "modelName": "tags",
+
+    "defaultTitleFieldName": "name",
+    "defaultOrderField": "name",
+    "defaultOrderType": "asc", // asc
+
+    "fields": {},
+
+    "constraints": {
+      "name": "inherit",
+    },
+
+    "detailSelectFields": [],
+
+    "selectJoins": {},
+
+    "detailDisplayFields": [],
+
+    "listSelectFields": [
+      "name",
+    ],
+
+    "listDisplayFields": [
+      "name",
+    ]
+  },
+
+  /**
+   * #TAGS by entity
+   * Special collection/model schema to select tags of a specific entity since
+   * direct access to tags is not allowed.
+   */
+  "entityTags": {
+    "iconName": "tag",
+    "modelName": "entityTags",
+
+    "defaultTitleFieldName": "name",
+    "defaultOrderField": "tags.name",
+    "defaultOrderType": "asc", // asc
+
+    "fields": {},
+
+    "constraints": {
+      "name": "inherit",
+    },
+
+    "detailSelectFields": [],
+
+    "selectJoins": {},
+
+    "detailDisplayFields": [],
+
+    "noListSelectFieldsMerge": true,
+    "listSelectFields": [
+      // This will guarantee with an distinct select that there is every
+      // tags once only and help for easier managing on client side
+      ["tags.name", "ID"],
+      ["tags.name", "name"],
+    ],
+
+    "listDisplayFields": []
+  },
+
+  /**
+   * #ACCOUNTS
+   */
+  "accounts": {
+    "iconName": "",
+    "modelName": "accounts",
+
+    "defaultTitleFieldName": "lastname",
+    "defaultOrderField": "lastname",
+    "defaultOrderType": "asc", // asc
+
+    "fields": {
+      "type": {
+        "defaultValue": "0",
+        "iconName": "paperclip",
+        "valueType" : "integer",
+        "inputType" : "select",
+        "displayType" : "select",
+        "selectOptionsFromZeyos": "types",
+        "selectOptionsLocaleKey": true,
+        "implementation": "ArrSelect"
+      },
+      "locked": {
+        "defaultValue": 0,
+        "iconName": "lock",
+        "valueType" : "integer",
+        "inputType" : "checkbox",
+        "displayType" : "checkbox",
+        "implementation" : "Checkbox",
+      },
+      "excludetax": {
+        "defaultValue": 0,
+        "iconName": "info-circle",
+        "valueType" : "integer",
+        "inputType" : "checkbox",
+        "displayType" : "checkbox",
+        "implementation" : "Checkbox",
+      }
+    },
+
+    "constraints": {
+      "visibility": "inherit",
+      "lastname": "inherit",
+      "type": {
+        "conditions": [
+          ["field::type", "op::>=", 0], "&&", ["field::type", "op::<=", 4]
+        ]
+      },
+      // The following things will be enforced with enhanced form methods
+      // "customernum" : "..."
+      // "suppliernum" : "..."
+      // "currency" : "..."
+    },
+
+    "detailSelectFields": [
+      "lastmodified",
+      "creationdate",
+      "visibility",
+      "contact",
+      "customernum",
+      "suppliernum",
+      "currency",
+      "locked",
+      "excludetax",
+      "description",
+      "ownergroup"
+    ],
+
+    "selectJoins": {
+      "contact": "inherit",
+      "ownergroup": "inherit"
+    },
+
+    "detailDisplayFields": [
+      "lastname",
+      "firstname",
+      "type",
+      "ownergroup",
+      "contact",
+      "customernum",
+      "suppliernum",
+      "currency",
+      "locked",
+      "excludetax",
+      "description",
+    ],
+
+    "listSelectFields": [
+      "firstname",
+      "lastname",
+      "type",
+      "customernum",
+      "suppliernum",
+      "currency",
+    ],
+
+    "listDisplayFields": [
+      "customernum",
+      "suppliernum",
+      "currency",
+    ],
+
+    "joinSelectFields": [
+      "firstname",
+      "lastname",
+    ],
+
+    "groupingFields": [
+      "assigneduser",
+      "creator",
+      "type",
+    ],
+
+  },
+
+
+
+  /**
+   * #OPPORTUNITIES
+   */
+  "opportunities": {
+    "iconName": "",
+    "modelName": "opportunities",
+    "defaultOrderField": "name",
+    "defaultOrderType": "asc", // asc
+
+    "fields": {
+      "status": {
+        "defaultValue": "0",
+        "iconName": "list-alt",
+        "valueType" : "integer",
+        "inputType" : "select",
+        "displayType" : "select",
+        "selectOptionsFromZeyos": "statuses",
+        "selectOptionsLocaleKey": true,
+        "implementation": "ArrSelect"
+      },
+      "probability": {
+        "iconName": "calculator",
+        "displayType": "percent"
+      },
+      "worstcase": {
+        "iconName": "arrow-circle-o-down",
+        "valueType": "float",
+        "inputType": "number",
+        "displayType": "money",
+        "implementation": "Formatted",
+        "formatType": "money"
+      },
+      "mostlikely": {
+        "iconName": "arrow-circle-o-right",
+        "valueType": "float",
+        "inputType": "number",
+        "displayType": "money",
+        "implementation": "Formatted",
+        "formatType": "money"
+      },
+      "upside": {
+        "iconName": "arrow-circle-o-up",
+        "valueType": "float",
+        "inputType": "number",
+        "displayType": "money",
+        "implementation": "Formatted",
+        "formatType": "money"
+      },
+    },
+
+    "constraints": {
+      "name": "inherit",
+      "upside": {
+        "localeKey": "error.greator.equal.zero",
+        "conditions": [
+          ["field::upside", "op::>=", 0]
+        ]
+      },
+      "mostlikely": {
+        "localeKey": "error.greator.equal.zero",
+        "conditions": [
+          ["field::mostlikely", "op::>=", 0]
+        ]
+      },
+      "worstcase": {
+        "localeKey": "error.greator.equal.zero",
+        "conditions": [
+          ["field::worstcase", "op::>=", 0]
+        ]
+      },
+    },
+
+    "detailSelectFields": [
+      "lastmodified",
+      "creationdate",
+      "visibility",
+      "assigneduser",
+      "ownergroup",
+      "account",
+      "contact",
+      "worstcase",
+      "mostlikely",
+      "upside",
+      "description",
+    ],
+
+    "selectJoins": {
+      "contact": "inherit",
+      "account": "inherit",
+      "ownergroup": "inherit",
+      "assigneduser": "inherit"
+    },
+
+    "detailDisplayFields": [
+      "name",
+      "opportunitynum",
+      "ownergroup",
+      "assigneduser",
+      "account",
+      "contact",
+      "duedate",
+      "status",
+      "priority",
+      "probability",
+      "worstcase",
+      "mostlikely",
+      "upside",
+      "description",
+    ],
+
+    "listSelectFields": [
+      "name",
+      "opportunitynum",
+      "duedate",
+      "status",
+      "priority",
+      "probability",
+    ],
+
+    "listDisplayFields": [
+      "duedate",
+      "status",
+      "priority",
+      "probability",
+    ],
+
+    "groupingFields": [
+      "account",
+      "assigneduser",
+      "contact",
+      "priority",
+      "status",
+      "creator",
+    ],
+  },
+
+
+  /**
+   * #CONTACTS
+   */
+  "contacts": {
+    "iconName" : "user",
+    "modelName": "contacts",
+
+    "defaultTitleFieldName": "lastname",
+    "defaultOrderField": "lastname",
+    "defaultOrderType": "asc", // asc
+
+    "fields": {
+      "type": {
+        "defaultValue": "1",
+        "iconName": "paperclip",
+        "valueType" : "integer",
+        "inputType" : "select",
+        "displayType" : "select",
+        "selectOptionsFromZeyos": "types",
+        "selectOptionsLocaleKey": true,
+        "implementation": "ArrSelect"
+      }
+    },
+
+    "constraints": {
+      "owner": "inherit",
+      "visibility": "inherit",
+      "lastname": "inherit",
+      "type": {
+        "conditions": [
+          ["field::type", "op::==", 0], "||", ["field::type", "op::==", 1]
+        ]
+      },
+      "typeFields": {
+        "conditions": [
+          ["field::type", "op::==", 1], "||", "(",
+            ["field::title", "op::==", ""], "&&",
+            ["field::company", "op::==", ""], "&&",
+            ["field::position", "op::==", ""], "&&",
+            ["field::department", "op::==", ""],
+          ")"
+        ]
+      }
+    },
+
+    "detailSelectFields": [
+      "lastmodified",
+      "creationdate",
+      "owneruser",
+      "ownergroup",
+      "assigneduser",
+      "visibility",
+      "title",
+      "position",
+      "department",
+      "address",
+      "region",
+      "phone2",
+      "fax",
+      "email2",
+      "website",
+      "birthdate",
+      "description",
+      "picbinfile",
+      "gravatar"
+    ],
+
+    "selectJoins": {
+      "owneruser": "inherit",
+      "ownergroup": "inherit",
+      "assigneduser": "inherit"
+    },
+
+    "detailDisplayFields": [
+      "lastname",
+      "firstname",
+
+      "owneruser",
+      "assigneduser",
+
+      "title",
+      "type",
+
+      "description",
+
+      "company",
+      "position",
+      "department",
+
+      "address",
+      "postalcode",
+      "city",
+      "region",
+      "country",
+
+      "phone",
+      "phone2",
+      "cell",
+      "fax",
+      "email",
+      "email2",
+      "website",
+      "birthdate",
+    ],
+
+    "detailLegendsByIndexes": {
+      8: "contactdata"
+    },
+
+    "listSelectFields": [
+      "firstname",
+      "lastname",
+      "type",
+      "company",
+      "country",
+      "postalcode",
+      "city",
+      "phone",
+      "cell",
+      "email",
+      "assigneduser",
+    ],
+
+    "joinSelectFields": [
+      "firstname",
+      "lastname",
+      "type"
+    ],
+
+    "listDisplayFields": [
+      ":addressShort",
+      "phone",
+      "cell",
+      "email"
+    ],
+
+    "groupingFields": [
+      "assigneduser",
+      "city",
+      "company",
+      "country",
+      "creator",
+      "department",
+      "position",
+      "postalcode",
+      "region",
+      "type",
+    ],
+
+  },
+
+
+  /**
+   * #TASKS
+   */
+  "tasks": {
+    "iconName" : "tasks",
+    "modelName": "tasks",
+
+    "defaultOrderField": "name",
+    "defaultOrderType": "asc", // asc
+
+    "fields": {
+      "status": {
+        "defaultValue": "0",
+        "iconName": "list-alt",
+        "valueType" : "integer",
+        "inputType" : "select",
+        "displayType" : "select",
+        "selectOptionsFromZeyos": "statuses",
+        "selectOptionsLocaleKey": true,
+        "implementation": "ArrSelect"
+      },
+
+      "projectedeffort": {
+        "iconName": "clock-o",
+        "valueType": "duration",
+        "displayType" : "duration",
+        "inputType" : "duration"
+      }
+    },
+
+    "constraints": {
+      "name": "inherit",
+    },
+
+    "selectJoins": {
+      "owneruser": "inherit",
+      "ownergroup": "inherit",
+      "assigneduser": "inherit",
+      "project": "inherit"
+    },
+
+    "detailSelectFields": [
+      "lastmodified",
+      "creationdate",
+      "owneruser",
+      "ownergroup",
+      "assigneduser",
+      "visibility",
+      "project",
+      // "ticket",
+      "datefrom",
+      "duedate",
+      "description"
+    ],
+    "detailDisplayFields": [
+      "name",
+      "tasknum",
+
+      "owneruser",
+      "assigneduser",
+
+      "project",
+      // "ticket",
+      "datefrom",
+      "duedate",
+      "status",
+      "priority",
+      "projectedeffort",
+      "description"
+    ],
+
+    "joinSelectFields": [
+      "name",
+      "tasknum",
+    ],
+
+    "listSelectFields": [
+      "name",
+      "tasknum",
+      "status",
+      "priority",
+      "projectedeffort"
+    ],
+
+    "listDisplayFields": [
+      "status",
+      "priority",
+      "projectedeffort"
+    ],
+
+    "groupingFields": [
+      "assigneduser",
+      "priority",
+      "project",
+      "status",
+      "ticket",
+      "creator",
+    ],
+  },
+
+
+  /**
+   * #ACTIONSTEPS
+   */
+  "actionsteps": {
+    "iconName" : "actionsteps",
+    "modelName": "actionsteps",
+
+    "standardViewFilterField": null,
+    "defaultFilterFields": null,
+
+    "assocFilterFields": [{
+      "column": "status",
+      "value": [0, 3],
+      "condition": "b"
+    }],
+
+    "defaultOrderField": "name",
+    "defaultOrderType": "asc", // asc
+
+    "fields": {
+      "status": {
+        "defaultValue": "0",
+        "iconName": "list-alt",
+        "valueType" : "integer",
+        "inputType" : "select",
+        "displayType" : "select",
+        "selectOptionsFromZeyos": "statuses",
+        "selectOptionsLocaleKey": true,
+        "implementation": "ArrSelect",
+        "disabled": true
+      },
+      "effort": {
+        "defaultValue": "0",
+        "iconName": "clock-o",
+        "valueType": "duration",
+        "displayType" : "duration",
+        "inputType" : "duration",
+        "implementation": "Duration",
+
+      }
+
+    },
+
+    "constraints": {
+      "name": "inherit",
+      "effort": {
+        "localeKey": "error.greator.equal.zero",
+        "conditions": [
+          ["field::effort", "op::>=", 0]
+        ]
+      }
+    },
+
+    "detailSelectFields": [
+      "lastmodified",
+      "creationdate",
+      "assigneduser",
+      "owneruser",
+      "ownergroup",
+      "task",
+      // "ticket",
+      // "account",
+      "description",
+    ],
+
+    "detailDisplayFields": [
+      "name",
+      "actionnum",
+      "owneruser",
+      "assigneduser",
+      "task",
+      // "ticket",
+      // "account",
+      "date",
+      "status",
+      "effort",
+      "description",
+    ],
+
+    "selectJoins": {
+      "owneruser": "inherit",
+      "ownergroup": "inherit",
+      "assigneduser": "inherit",
+      "task": "inherit"
+    },
+
+    "listSelectFields": [
+      "name",
+      "actionnum",
+      "date",
+      "status",
+      "effort",
+    ],
+
+    "joinSelectFields": [
+      "name",
+      "actionnum",
+    ],
+
+    "listDisplayFields": [
+      "date",
+      "status",
+      "effort",
+    ],
+
+    "groupingFields": [
+      "account",
+      "task",
+      "assigneduser",
+      "status",
+      "ticket",
+      "creator",
+    ],
+  },
+
+
+  /**
+   * #APPOINTMENTS
+   */
+  "appointments": {
+    "iconName" : "appointments",
+    "modelName": "appointments",
+
+    "defaultOrderField": "name",
+    "defaultOrderType": "asc", // asc
+
+    "fields": {
+      "interval": {
+        "iconName": "clock-o",
+        "defaultValue": "1",
+        "inputType": "number",
+      },
+      "location": {
+        "iconName": "location-arrow"
+      },
+      "recurrence": {
+        "iconName": "refresh",
+        "valueType": "int",
+        "defaultValue": null,
+        "inputType" : "select",
+        "displayType" : "select",
+        "selectOptionsFromZeyos": "calendar.recurrence",
+        "selectOptionsLocaleKey": true,
+        "implementation": "ArrSelect",
+        "addNonValueLocale": "field.appointments.recurrence.option.none"
+      },
+      "dateto": {
+        "defaultValue": "<?=datenow?>",
+        "onCreationDefaultValue": true,
+        "iconName": "calendar-o",
+        "inputType": "datetime-local",
+        "valueType": "timestampSeconds",
+        "displayType": "datetime",
+      },
+      "datefrom": {
+        "defaultValue": "<?=datenow?>",
+        "onCreationDefaultValue": true,
+        "iconName": "calendar-o",
+        "inputType": "datetime-local",
+        "valueType": "timestampSeconds",
+        "displayType": "datetime",
+      },
+      "daterecurrence": {
+        "iconName": "calendar-o",
+        "inputType": "datetime-local",
+        "valueType": "timestampSeconds",
+        "displayType": "datetime",
+      }
+
+    },
+
+    "constraints": {
+      "name": "inherit",
+      "datefrom": {
+        "localeKey": "error.appointment.start.date",
+        "conditions": [
+          ["field::datefrom", "op::!=", ""]
+        ]
+      },
+      "dateto": {
+        "localeKey": "error.dateto.greater.datefrom",
+        "conditions": [
+          ["field::dateto", "op::>", "field::datefrom"]
+        ]
+      },
+      "interval": {
+        "localeKey": "error.interval.greater.zero",
+        "conditions": [
+          ["field::interval", "op::>", 0]
+        ]
+      }
+    },
+
+    "detailSelectFields": [
+      "lastmodified",
+      "creationdate",
+      "owneruser",
+      "ownergroup",
+      "assigneduser",
+      "recurrence",
+      "interval",
+      "daterecurrence",
+      "description"
+    ],
+    "detailDisplayFields": [
+      "name",
+      "location",
+      "owneruser",
+      "assigneduser",
+      "datefrom",
+      "dateto",
+      "color",
+      "recurrence",
+      "interval",
+      "daterecurrence",
+      "description"
+    ],
+
+    "selectJoins": {
+      "owneruser": "inherit",
+      "ownergroup": "inherit",
+      "assigneduser": "inherit"
+    },
+
+    "listSelectFields": [
+      "visibility",
+      "name",
+      "location",
+      "datefrom",
+      "dateto",
+      "color",
+      "recurrence",
+      "interval"
+    ],
+
+    "joinSelectFields": [
+      "name",
+      "color"
+    ],
+
+    "listDisplayFields": [
+      // "location",
+      "datefrom",
+      "dateto",
+      "color",
+      "recurrence"
+    ],
+
+    "groupingFields": [
+      "assigneduser",
+      "creator",
+      "recurrence",
+    ],
+  },
+
+
+  /**
+   * #NOTES
+   */
+  "notes": {
+    "iconName" : "notes",
+    "modelName": "notes",
+
+    "defaultOrderField": "name",
+    "defaultOrderType": "asc", // asc
+
+    "fields": {
+      "text": {
+        "iconName": "sticky-note",
+        "inputType": "multicontent",
+        "displayType": "multicontent",
+        "implementation": "MultiContent",
+        "contentTypes": ["text", "html"],
+        "contentTypeFieldName": "contenttype",
+      },
+
+      "status": {
+        "defaultValue": "0",
+        "iconName": "list-alt",
+        "valueType" : "integer",
+        "inputType" : "select",
+        "displayType" : "select",
+        "selectOptionsFromZeyos": "statuses",
+        "selectOptionsLocaleKey": true,
+        "implementation": "ArrSelect"
+      },
+
+      "contenttype": {}
+    },
+
+    "constraints": {
+      "name": "inherit"
+    },
+
+    "detailSelectFields": [
+      "lastmodified",
+      "creationdate",
+      "owneruser",
+      "ownergroup",
+      "assigneduser",
+      "description",
+      "text",
+      "contenttype"
+    ],
+    "detailDisplayFields": [
+      "name",
+      "owneruser",
+      "assigneduser",
+      "status",
+      "description",
+      "text"
+    ],
+
+    "selectJoins": {
+      "creator": "inherit",
+      "owneruser": "inherit",
+      "ownergroup": "inherit",
+      "assigneduser": "inherit"
+    },
+
+    "listSelectFields": [
+      "visibility",
+      "name",
+      "status",
+      "assigneduser",
+    ],
+
+    "joinSelectFields": [
+      "name"
+    ],
+
+    "listDisplayFields": [
+      "visibility",
+      "assigneduser",
+      "status",
+      "lastmodified"
+    ],
+
+    "groupingFields": [
+      "assigneduser",
+      "contenttype",
+      "status",
+      "creator",
+    ],
+  },
+
+
+
+  /**
+   * #EVENTS
+   */
+  "events": {
+    "iconName" : "events",
+    "modelName": "events",
+
+    "defaultOrderField": "name",
+    "defaultOrderType": "asc", // asc
+
+    "fields": {
+      "dateto": {
+        "defaultValue": "<?=datenow?>",
+        "onCreationDefaultValue": true,
+        "iconName": "calendar-o",
+        "inputType": "datetime-local",
+        "valueType": "timestampSeconds",
+        "displayType": "datetime",
+      },
+      "datefrom": {
+        "defaultValue": "<?=datenow?>",
+        "onCreationDefaultValue": true,
+        "iconName": "calendar-o",
+        "inputType": "datetime-local",
+        "valueType": "timestampSeconds",
+        "displayType": "datetime",
+      },
+      "entity": {
+        "valueType": "origin",
+        "isSortable": false
+      },
+      "index": {
+        "isSortable": false
+
+      }
+    },
+
+    "constraints": {
+      "name": "inherit",
+      "datefrom": {
+        "localeKey": "error.appointment.start.date",
+        "conditions": [
+          ["field::datefrom", "op::!=", ""]
+        ]
+      },
+      "dateto": {
+        "localeKey": "error.dateto.greater.datefrom",
+        "conditions": [
+          ["field::dateto", "op::>", "field::datefrom"]
+        ]
+      }
+    },
+
+    "detailSelectFields": [
+      "lastmodified",
+      "creationdate",
+      "owneruser",
+      "ownergroup"
+    ],
+    "detailDisplayFields": [
+      "name",
+      "owneruser",
+      "datefrom",
+      "dateto",
+      "color",
+    ],
+
+    "selectJoins": {
+      "owneruser": "inherit",
+      "ownergroup": "inherit"
+    },
+
+    "listSelectFields": [
+      "name",
+      "datefrom",
+      "dateto",
+      "color",
+      "entity",
+      "index"
+    ],
+
+    "joinSelectFields": [
+      "name",
+      "color"
+    ],
+
+    "listDisplayFields": [
+      "datefrom",
+      "dateto",
+      "color"
+    ],
+  },
+
+
+  /**
+   * #MINDLOG / RECORDS
+   *
+   * !! ATTENTION !! : This model schema is strongly connected to the
+   * zeylib REST api extension "zeyos-mobile". DO NOT TOUCH unless you know!
+   */
+  "records": {
+    "iconName" : "mindlog",
+    "modelName": "records",
+
+    "customApiRoute": "extensions/zeyos-mobile-records-1.3",
+
+    "defaultFilterFields": null,
+
+    "assocFilterFields": [{
+      "column": "flag",
+      "value": 0,
+      "condition": "="
+    }],
+
+    "fields": {
+      "assigneduser": {
+        "iconVendor": "ZeyosModuleIcon",
+        "iconName": "users",
+        "valueType" : "association",
+        "displayType" : "association",
+        "inputType" : "association",
+        "implementation": "EntityAssociation",
+        "canAssignToMe": false,
+        "entityName": "users",
+        "entityAlias": "assigneduser"
+      },
+      "entity": {
+        "isSortable": false,
+        "customFilter": false
+      },
+      "index": {
+        "isSortable": false,
+        "customFilter": false
+      },
+      "flag": {
+        "valueType": "integer",
+        "isSortable": false,
+        "customFilter": false
+      },
+      "sender": {
+        "isSortable": false,
+        "customFilter": false
+      },
+      "text": {
+        "iconName": "paragraph",
+        "implementation": "Textarea",
+        "valueType": "html",
+        "inputType": "textarea"
+      },
+      "meta": {
+        "valueType": "json"
+      },
+      "date": {
+        "valueType": "timestampSeconds",
+        "displayType": "datetimepretty"
+      },
+
+      "comments": {
+        "valueType": "origin"
+      },
+      "follow": {
+        "valueType": "int"
+      },
+      "like": {
+        "valueType": "int"
+      },
+      "likesCount": {
+        "valueType": "int"
+      },
+      "files": {
+        "iconName": "upload",
+        "implementation": "File",
+        "displayType": "files",
+        "valueType": "file",
+        "inputType:": "file",
+      },
+      "associations": {
+        "valueType": "origin"
+      },
+      "entityItem": {
+        "valueType": "origin"
+      },
+
+      "creator": {},
+      "creatorContact": {},
+      "assigneduserContact": {},
+      "notification": {},
+    },
+
+    "constraints": {
+      "text": {
+        "localeKey": "error.invalid.record",
+        "conditions": [
+          ["field::text", "op::!=", ""],
+          "||",
+          ["field::files", "op::!=", ""]
+
+        ]
+      },
+      "files": {
+        "localeKey": "error.invalid.record",
+        "conditions": [
+          ["field::text", "op::!=", ""],
+          "||",
+          ["field::files", "op::!=", ""]
+        ]
+      }
+    },
+
+    "noList2DetailSelectFieldsMerge": true,
+    "detailSelectFields": [
+      "ID",
+      "lastmodified",
+      "creationdate",
+      // "creator",
+      "owneruser",
+      "ownergroup",
+      "entity",
+      "index",
+      "entityItem",
+      "flag",
+      "date",
+      "sender",
+      "text",
+      "meta",
+
+      "follow",
+      "like",
+      "comments",
+      "likesCount",
+      "files",
+      "associations",
+
+      "creator",
+      "creatorContact",
+      "assigneduser",
+      "assigneduserContact",
+      "notification"
+    ],
+
+    "detailDisplayFields": [
+      "text",
+      "owneruser",
+      "assigneduser",
+      "files"
+    ],
+
+    // ATTENTION: These joins are hardcoded in
+    // the appropriate zeylib-extension for this model. Do not change
+    // until you change this extension as well
+    "selectJoins": {
+      "creator": {
+        "args": ["creator", "records", "LEFT", "creator"],
+        "model": "users",
+        "joinSelectFields": ["ID", "name", "email"]
+      },
+      "creatorContact": {
+        "args": ["contact", "users", "LEFT", {"users": "creator", "contacts": "creatorContact"}],
+        "model": "contacts",
+        "joinSelectFields": ["ID", "picbinfile", "gravatar"]
+      },
+      "assigneduser": {
+        "args": ["assigneduser", "records", "LEFT", "assigneduser"],
+        "model": "users",
+        "joinSelectFields": ["ID", "name", "email"]
+      },
+      "assigneduserContact": {
+        "args": ["contact", "users", "LEFT", {"users": "assigneduser", "contacts": "assigneduserContact"}],
+        "model": "contacts",
+        "joinSelectFields": ["ID", "picbinfile", "gravatar"]
+      },
+      "notification": {
+        "args": ["ID", "records", "LEFT", "notification"],
+        "model": "notifications",
+        "joinSelectFields": ["ID"]
+      },
+    },
+
+    "detailLegendsByIndexes": null,
+
+    // ATTENTION: These columns are hardcoded in
+    // the appropriate zeylib-extension for this model. Do not change
+    // until you change this extension as well
+    "listSelectFields": [
+      "lastmodified",
+      "creationdate",
+      // "creator",
+      "owneruser",
+      "ownergroup",
+      "entity",
+      "index",
+      "entityItem",
+      "flag",
+      "date",
+      "sender",
+      "text",
+      "meta",
+
+      "follow",
+      "like",
+      "comments",
+      "likesCount",
+      "files",
+      "associations",
+
+      "creator",
+      "creatorContact",
+      "assigneduser",
+      "assigneduserContact",
+      "notification"
+    ],
+
+    "listDisplayFields": [
+      "text"
+    ]
+  },
+
+
+  /**
+   * #RECORDS COMMENTS
+   *
+   * !! ATTENTION !! : This model schema is strongly connected to the
+   * zeylib REST api extension "zeyos-mobile". DO NOT TOUCH unless you know!
+   */
+  "comments": {
+    "modelName": "comments",
+
+    "defaultFilterFields": null,
+    "assocFilterFields": null,
+
+    "defaultOrderField": "creationdate",
+    "defaultOrderType": "asc",
+
+    "fields": {
+      "creationdate": {
+        "valueType": "timestampSeconds",
+        "displayType": "datetimepretty"
+      },
+      "sender": {},
+      "text": {
+        "valueType": "html",
+      },
+      "creatorContact": {}
+    },
+
+    "detailSelectFields": [
+      "record",
+      "creator",
+      "text"
+    ],
+    "detailDisplayFields": [
+      "text"
+    ],
+
+    "selectJoins": {
+      "creator": {
+        "args": ["creator", "comments", "LEFT", "creator"],
+        "model": "users",
+        "joinSelectFields": ["ID", "name", "email"]
+      },
+      "creatorContact": {
+        "args": ["contact", "users", "LEFT", {"users": "creator", "contacts": "creatorContact"}],
+        "model": "contacts",
+        "joinSelectFields": ["ID", "picbinfile", "gravatar"],
+        "nestedJoin": true
+      },
+    },
+
+    "listSelectFields": [
+      "record",
+      "creationdate",
+      "text",
+      "creator",
+      "creatorContact"
+    ],
+
+    "listDisplayFields": [
+    ],
+  },
+
+
+  /**
+   * #RECORDS LIKES
+   */
+  "likes": {
+    "modelName": "likes",
+
+    "defaultFilterFields": null,
+    "assocFilterFields": null,
+
+    "defaultOrderField": "ID",
+    "defaultOrderType": "asc", // asc
+
+    "defaultOrderField": "creationdate",
+    "fields": {
+      "creatorContact": {}
+    },
+
+    "detailSelectFields": [
+    ],
+    "detailDisplayFields": [],
+
+    "selectJoins": {
+      "creator": {
+        "args": ["creator", "likes", "LEFT", "creator"],
+        "model": "users"
+      },
+      "creatorContact": {
+        "args": ["contact", "users", "LEFT", {"users": "creator", "contacts": "creatorContact"}],
+        "model": "contacts",
+        "joinSelectFields": ["ID", "picbinfile", "gravatar"],
+        "nestedJoin": true
+      },
+    },
+
+    "joinSelectFields": ["ID"],
+
+    "listSelectFields": [
+      "creator",
+      "creationdate",
+      "creatorContact"
+    ],
+
+    "listDisplayFields": [
+    ],
+  },
+
+
+  /**
+   * #RECORDS FILES
+   *
+   * !! ATTENTION !! : This model schema is strongly connected to the
+   * zeylib REST api extension "zeyos-mobile". DO NOT TOUCH unless you know!
+   */
+  "files": {
+    "modelName": "files",
+
+    "defaultFilterFields": null,
+    "assocFilterFields": null,
+
+    "defaultOrderField": "ID",
+
+    "fields": {
+      "filename": {},
+      "mimetype": {},
+      "size": {},
+      "binfile": {}
+    },
+
+    "detailSelectFields": [
+    ],
+    "detailDisplayFields": [],
+
+    "selectJoins": {},
+
+    "listSelectFields": [
+      "record",
+      "filename",
+      "mimetype",
+      "size",
+      "binfile",
+    ],
+
+    "listDisplayFields": [
+    ],
+  },
+
+
+  /**
+   * #NOTIFICATIONS
+   */
+  "notifications": {
+    "modelName": "notifications",
+
+    "defaultFilterFields": null,
+    "assocFilterFields": null,
+
+    "defaultOrderField": "date",
+
+    "fields": {
+      "date": {},
+      "flag": {
+        "valueType": "int"
+      }
+    },
+
+    "detailSelectFields": [],
+    "detailDisplayFields": [],
+
+    "selectJoins": {},
+
+    "listSelectFields": [
+      "date",
+      "flag",
+    ],
+
+    "listDisplayFields": [],
+  },
+
+
+  /**
+   * #TICKETS
+   * this entity is for list views only. To set tasks tickets.
+   */
+  "tickets": {
+    "iconName" : "tickets",
+    "modelName": "tickets",
+
+    "defaultOrderField": "name",
+    "defaultOrderType": "asc", // asc
+
+    "fields": {},
+
+    "detailSelectFields": [
+      "lastmodified",
+    ],
+    "detailDisplayFields": [],
+
+    "selectJoins": {},
+
+    "listSelectFields": [
+      "name",
+      "ticketnum",
+    ],
+
+    "joinSelectFields": [
+      "name",
+      "ticketnum"
+    ],
+
+    "listDisplayFields": [
+      "ticketnum",
+    ],
+  },
+
+
+  /**
+   * #PROJECTS
+   * this entity is for list views only. To set tasks projects.
+   */
+  "projects": {
+    "iconName" : "projects",
+    "modelName": "projects",
+
+    "defaultOrderField": "name",
+    "defaultOrderType": "asc", // asc
+
+    "fields": {},
+
+    "detailSelectFields": [
+      "lastmodified",
+    ],
+    "detailDisplayFields": [],
+
+    "selectJoins": {},
+
+    "listSelectFields": [
+      "name",
+      "projectnum",
+    ],
+
+    "joinSelectFields": [
+      "name"
+    ],
+
+    "listDisplayFields": [
+      "projectnum",
+    ],
+  },
+
+
+  /**
+   * #GROUPS
+   * this entity is for list views only. To set ownership.
+   * This entity is bound to special rules and processing.
+   * DO NOT TOUCH unless you know what you do.
+   */
+  "groups": {
+    "iconName" : "groups",
+    "modelName": "groups",
+
+    "defaultOrderField": "name",
+    "defaultOrderType": "asc", // asc
+
+    "standardViewFilterField": {
+      "fieldName": "activity",
+      "value": 0
+    },
+    "defaultFilterFields": [{
+      "column": "activity",
+      "value": 0,
+      "condition": "="
+    }],
+
+    "assocFilterFields": [{
+      "column": "activity",
+      "value": 0,
+      "condition": "="
+    }],
+
+    "fields": {},
+
+    "detailSelectFields": [
+      "lastmodified",
+    ],
+    "detailDisplayFields": [],
+
+    "selectJoins": {},
+
+    "listSelectFields": [
+      "name"
+    ],
+
+    "joinSelectFields": [
+      "name"
+    ],
+
+    "listDisplayFields": [],
+  },
+
+
+  /**
+   * #USERS
+   * this entity is for list views only. To set ownership.
+   */
+  "users": {
+    "iconName" : "users",
+    "modelName": "users",
+
+    "defaultOrderField": "name",
+    "defaultOrderType": "asc", // asc
+
+    "standardViewFilterField": {
+      "fieldName": "activity",
+      "value": 0
+    },
+
+    "defaultFilterFields": [{
+      "column": "activity",
+      "value": 0,
+      "condition": "="
+    }],
+
+    "assocFilterFields": [{
+      "column": "activity",
+      "value": 0,
+      "condition": "="
+    }],
+
+    "fields": {},
+
+    "detailSelectFields": [
+      "lastmodified",
+    ],
+    "detailDisplayFields": [],
+
+    "selectJoins": {},
+
+    "listSelectFields": [
+      "name",
+      "email"
+    ],
+
+    "joinSelectFields": [
+      "name",
+      "email"
+    ],
+
+    "listDisplayFields": [
+    ],
+  },
+
+
+  /**
+   * #MESSAGES
+   */
+  "messages": {
+    "iconName" : "messages",
+    "modelName": "messages",
+
+    "standardViewFilterField": {
+      "fieldName": "mailbox",
+      "value": 0
+    },
+
+    "defaultFilterFields": [{
+      "column": "mailbox",
+      "value": 0
+    }],
+
+    "assocFilterFields": [{
+      "column": "mailbox",
+      "value": 0
+    }],
+
+    "defaultOrderField": "date",
+    "defaultOrderType": "desc",
+
+    "fields": {
+      "subject": {},
+      "to": {},
+      "sender": {},
+      "cc": {},
+      "bcc": {},
+      "to_email": {},
+      "to_name": {},
+      "sender_name": {},
+      "sender_email": {},
+      "flag": {
+        "valueType": "int"
+      },
+      "date": {
+        "iconName": "clock-o",
+        "displayType": "datetimeverbose",
+        "valueType": "timestampSeconds",
+        "inputType": "displayType",
+      },
+      "contenttype": {},
+      "text": {
+        "inputType": "multicontent",
+        "displayType": "multicontent",
+        "implementation": "MultiContent",
+        "contentTypes": ["text", "html"],
+        "contentTypeFieldName": "contenttype",
+      },
+      "mailbox": {
+        "valueType": "int",
+        "inputType" : "select",
+        "displayType" : "select",
+        "selectOptionsFromZeyos": "mailboxes",
+        "selectOptionsLocaleKey": true,
+        "implementation": "ArrSelect",
+        "isSortable": false,
+        "customFilter": false
+      }
+    },
+
+    "groupingFields": [
+      "date",
+      "to",
+      "contenttype",
+      // "mailserver",
+      // "mailinglist",
+      "ticket",
+      "creator",
+      "sender",
+    ],
+
+    "detailSelectFields": [
+      "sender",
+      "to",
+
+      "lastmodified",
+      "owneruser",
+      "ownergroup",
+      "ticket",
+      "text",
+      "contenttype",
+
+      "cc",
+      "bcc"
+    ],
+    "detailDisplayFields": [
+      "owneruser",
+      "ticket",
+      "text"
+    ],
+    "selectJoins": {},
+
+    "listSelectFields": [
+      "date",
+      "subject",
+      "sender_name",
+      "sender_email",
+      "to_name",
+      "to_email",
+      "flag",
+      "mailbox",
+    ],
+
+    "joinSelectFields": [],
+    "listDisplayFields": [
+      ":email_recipient",
+      "date",
+    ],
+  },
+
+
+  /**
+   * #MAILINGLISTS
+   */
+  "mailinglists": {
+    "iconName" : "mailinglists",
+    "modelName": "mailinglists",
+
+    "defaultOrderField": "name",
+    "defaultOrderType": "asc", // asc
+
+    "defaultFilterFields": null,
+    "assocFilterFields": null,
+
+    "fields": {
+      "sender": {}
+    },
+
+    "detailSelectFields": [
+      "lastmodified",
+    ],
+    "detailDisplayFields": [],
+    "selectJoins": {},
+
+    "listSelectFields": [
+      "name",
+      "sender",
+    ],
+
+    "joinSelectFields": [],
+    "listDisplayFields": [],
+  },
+
+
+  /**
+   * #LINKS
+   */
+  "links": {
+    "iconName" : "links",
+    "modelName": "links",
+
+    "defaultOrderField": "name",
+    "defaultOrderType": "asc", // asc
+
+    "defaultFilterFields": null,
+    "assocFilterFields": null,
+    "fields": {
+      "url": {}
+    },
+
+    "detailSelectFields": [
+      "lastmodified",
+    ],
+    "detailDisplayFields": [],
+    "selectJoins": {},
+
+    "listSelectFields": [
+      "name",
+      "url"
+    ],
+
+    "joinSelectFields": [],
+    "listDisplayFields": [],
+  },
+
+
+  /**
+   * #TRANSACTIONS
+   */
+  "transactions": {
+    "iconName" : "transactions",
+    "modelName": "transactions",
+
+    "defaultFilterFields": null,
+    "assocFilterFields": null,
+    "fields": {
+      "type": {}
+    },
+
+    "detailSelectFields": [
+      "lastmodified",
+    ],
+    "detailDisplayFields": [],
+    "selectJoins": {},
+
+    "listSelectFields": [
+      "transactionnum",
+      "type"
+    ],
+
+    "joinSelectFields": [],
+    "listDisplayFields": [],
+  },
+
+
+  /**
+   * #PAYMENTS
+   */
+  "payments": {
+    "iconName" : "payments",
+    "modelName": "payments",
+
+    "defaultFilterFields": null,
+    "assocFilterFields": null,
+    "fields": {
+      "subject": {}
+    },
+
+    "detailSelectFields": [
+      "lastmodified",
+    ],
+    "detailDisplayFields": [],
+    "selectJoins": {},
+
+    "listSelectFields": [
+      "subject"
+    ],
+
+    "joinSelectFields": [],
+    "listDisplayFields": [],
+  },
+
+
+  /**
+   * #CONTRACTS
+   */
+  "contracts": {
+    "iconName" : "contracts",
+    "modelName": "contracts",
+
+    "defaultOrderField": "name",
+    "defaultOrderType": "asc", // asc
+
+    "defaultFilterFields": null,
+    "assocFilterFields": null,
+    "fields": {
+    },
+
+    "detailSelectFields": [
+      "lastmodified",
+    ],
+    "detailDisplayFields": [],
+    "selectJoins": {},
+
+    "listSelectFields": [
+      "name",
+      "contractnum"
+    ],
+
+    "joinSelectFields": [],
+    "listDisplayFields": [],
+  },
+
+
+  /**
+   * #CAMPAIGNS
+   */
+  "campaigns": {
+    "iconName" : "campaigns",
+    "modelName": "campaigns",
+
+    "defaultOrderField": "name",
+    "defaultOrderType": "asc", // asc
+
+    "defaultFilterFields": null,
+    "assocFilterFields": null,
+    "fields": {
+    },
+
+    "detailSelectFields": [
+      "lastmodified",
+    ],
+    "detailDisplayFields": [],
+    "selectJoins": {},
+
+    "listSelectFields": [
+      "name"
+    ],
+
+    "joinSelectFields": [],
+    "listDisplayFields": [],
+  },
+
+
+  /**
+   * #ITEMS
+   */
+  "items": {
+    "iconName" : "items",
+    "modelName": "items",
+
+    "defaultOrderField": "name",
+    "defaultOrderType": "asc", // asc
+
+    "defaultFilterFields": null,
+    "assocFilterFields": null,
+    "fields": {
+    },
+
+    "detailSelectFields": [
+      "lastmodified",
+    ],
+    "detailDisplayFields": [],
+    "selectJoins": {},
+
+    "listSelectFields": [
+      "name",
+      "itemnum"
+    ],
+
+    "joinSelectFields": [],
+    "listDisplayFields": [],
+  },
+
+
+  /**
+   * #STORAGES
+   */
+  "storages": {
+    "iconName" : "storages",
+    "modelName": "storages",
+
+    "defaultOrderField": "name",
+    "defaultOrderType": "asc", // asc
+
+    "defaultFilterFields": null,
+    "assocFilterFields": null,
+    "fields": {
+    },
+
+    "detailSelectFields": [
+      "lastmodified",
+    ],
+    "detailDisplayFields": [],
+    "selectJoins": {},
+
+    "listSelectFields": [
+      "name"
+    ],
+
+    "joinSelectFields": [],
+    "listDisplayFields": [],
+  },
+
+
+  /**
+   * #PRICELISTS
+   */
+  "pricelists": {
+    "iconName" : "pricelists",
+    "modelName": "pricelists",
+
+    "defaultOrderField": "name",
+    "defaultOrderType": "asc", // asc
+
+    "defaultFilterFields": null,
+    "assocFilterFields": null,
+    "fields": {
+    },
+
+    "detailSelectFields": [
+      "lastmodified",
+    ],
+    "detailDisplayFields": [],
+    "selectJoins": {},
+
+    "listSelectFields": [
+      "name"
+    ],
+
+    "joinSelectFields": [],
+    "listDisplayFields": [],
+  },
+
+
+  /**
+   * #RESOURCES
+   */
+  "resources": {
+    "iconName" : "resources",
+    "modelName": "resources",
+
+    "defaultOrderField": "name",
+    "defaultOrderType": "asc", // asc
+
+    "defaultFilterFields": null,
+    "assocFilterFields": null,
+    "fields": {
+    },
+
+    "detailSelectFields": [
+      "lastmodified",
+    ],
+    "detailDisplayFields": [],
+    "selectJoins": {},
+
+    "listSelectFields": [
+      "name",
+      "identifier"
+    ],
+
+    "joinSelectFields": [],
+    "listDisplayFields": [],
+  },
+
+
+  /**
+   * #WEBLETS
+   */
+  "weblets": {
+    "iconName" : "weblets",
+    "modelName": "weblets",
+
+    "defaultOrderField": "name",
+    "defaultOrderType": "asc", // asc
+
+    "defaultFilterFields": null,
+    "assocFilterFields": null,
+    "fields": {
+    },
+
+    "detailSelectFields": [
+      "lastmodified",
+    ],
+    "detailDisplayFields": [],
+    "selectJoins": {},
+
+    "listSelectFields": [
+      "name",
+      "identifier"
+    ],
+
+    "joinSelectFields": [],
+    "listDisplayFields": [],
+  },
+
+
+  /**
+   * #SERVICES
+   */
+  "services": {
+    "iconName" : "services",
+    "modelName": "services",
+
+    "defaultOrderField": "name",
+    "defaultOrderType": "asc", // asc
+
+    "defaultFilterFields": null,
+    "assocFilterFields": null,
+    "fields": {
+    },
+
+    "detailSelectFields": [
+      "lastmodified",
+    ],
+    "detailDisplayFields": [],
+    "selectJoins": {},
+
+    "listSelectFields": [
+      "name",
+      "identifier"
+    ],
+
+    "joinSelectFields": [],
+    "listDisplayFields": [],
+  },
+
+
+  /**
+   * #EXTDATAFORMS
+   */
+  "extdataforms": {
+    "iconName" : "extdataforms",
+    "modelName": "extdataforms",
+
+    "defaultOrderField": "name",
+    "defaultOrderType": "asc", // asc
+
+    "defaultFilterFields": null,
+    "assocFilterFields": null,
+    "fields": {
+    },
+
+    "detailSelectFields": [
+      "lastmodified",
+    ],
+    "detailDisplayFields": [],
+    "selectJoins": {},
+
+    "listSelectFields": [
+      "name",
+      "identifier"
+    ],
+
+    "joinSelectFields": [],
+    "listDisplayFields": [],
+  },
+
+
+  /**
+   * #APPLICATIONS
+   */
+  "applications": {
+    "iconName" : "applications",
+    "modelName": "applications",
+
+    "defaultOrderField": "name",
+    "defaultOrderType": "asc", // asc
+
+    "defaultFilterFields": null,
+    "assocFilterFields": null,
+    "fields": {
+    },
+
+    "detailSelectFields": [
+      "lastmodified",
+    ],
+    "detailDisplayFields": [],
+    "selectJoins": {},
+
+    "listSelectFields": [
+      "name",
+      "identifier"
+    ],
+
+    "joinSelectFields": [],
+    "listDisplayFields": [],
+  }
+}

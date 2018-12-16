@@ -1,0 +1,226 @@
+@import "common.less";
+
+.modal {
+	/**
+	 * Fix for bootstrap3
+	 */
+	overflow: auto;
+	position: fixed;
+	background: #FFF;
+	bottom: auto;
+	top: auto;
+	right: auto;
+	left: auto;
+
+	.rounded(5px);
+	.drop-shadow();
+
+	>.close {
+		position: absolute;
+		top: 0px;
+		right: 10px;
+		font-size: 30pt;
+		opacity: .6;
+	}
+
+	.modal-body {
+		overflow: auto;
+		overflow-y: auto;
+
+	}
+}
+
+/* set hint width for horizontal forms to get linebreak*/
+form [data-hint] {
+	&.hint--fwidth:after {
+		width: 250px;
+		white-space: normal;
+	}
+	&.hint--bottom:before, &.hint--bottom:after, &.hint--top:before, &.hint--top:after {
+		left: 20px;
+	}
+}
+/* displaying form with columns */
+.form-columns {
+	>.column {
+		padding-left: 20px;
+		float: left;
+		>.form-group {
+			width: 100%;
+			float: left;
+		}
+	}
+}
+
+fieldset {
+	.form-group {
+		.highlight {
+			.mtransition(opacity 200ms, left 200ms;);
+			left: 100px;
+			opacity: 0;
+			position: relative;
+			display: none;
+			&.visible {
+				display: block;
+			}
+		}
+
+		&.has-warning .highlight, &.has-info .highlight, &.has-error .highlight {
+			left: 0px;
+			opacity: 1;
+		}
+	}
+}
+
+
+/*****************************
+ * === gx.bootstrap.FieldImgUpload ===
+ *****************************/
+.bs-fileuploader {
+	.bs-fileInput {
+		position: relative;
+		text-align: right;
+		-moz-opacity:0 ;
+		opacity: 0;
+		z-index: 2;
+	}
+
+	.bs-fileBtn {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		z-index: 1;
+
+		height: 30px;
+		width: 250px;
+	}
+
+	.bs-counterbar {
+		float: right;
+		font-size: 10pt;
+	}
+}
+
+
+/*****************************
+ * === gx.bootstrap.FieldImgUpload ===
+ *****************************/
+.gxBootsrapImgUpload {
+	display: table;
+
+	&.has-error .image { border-color: #d2322d; }
+	&.has-success .image { border-color: #468847; }
+
+	.image {
+		position: relative;
+		margin-top: 5px;
+		border: 2px solid #E6E6E6;
+		text-align: center;
+		.transition(border-color);
+
+		&.access {
+			border-color: #468847;
+		}
+
+		>.placeholder, >input, .textprogress, .textprogress >.blend {
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			width: 100%;
+			height: 100%;
+		}
+
+		>.placeholder {
+			text-align: center;
+			background: transparent center no-repeat;
+			z-index: 1;
+			border: none;
+		}
+
+		>.placeholder[src=""] {
+			opacity: 0.5;
+		}
+
+		>input {
+			font-size: 0pt; /* disable the default text */
+			text-align: right;
+			z-index: 2;
+
+			display: block;
+			width: inherit;
+			height: inherit;
+			cursor: pointer;
+
+			opacity: 0;
+			/* for debugging click area width and height */
+			border: 1px solid red;
+		}
+
+		>.textprogress {
+			display: none;
+			padding: 20px;
+			z-index: 3;
+			>.blend {
+				background: #FFFFFF;
+				opacity: .7;
+				z-index: -1;
+			}
+
+			>.glyphicon-remove {
+				color: #d2322d;
+				margin-left: 7px;
+				cursor: pointer;
+			}
+		}
+
+		&.active {
+			>input {
+				cursor: progress;
+			}
+			>.textprogress {
+				display: block;
+
+			}
+		}
+	}
+
+	&.small .image >.textprogress {
+		position: absolute;
+		width: 100px;
+		left: 100%;
+		top: 4px;
+		padding: 0px;
+		padding-left: 10px;
+		>.blend {
+			display: none;
+		}
+	}
+
+	&.disabled .image>input {
+		cursor: default;
+	}
+}
+
+
+
+/* DataFilter
+-------------------------------------------------------------------- */
+.gxBootstrapDataFilter {
+	.filter {
+		display: inline-block;
+		float:left;
+	}
+	legend, button {
+		float: left;
+		width: auto;
+		margin-left: 15px;
+	}
+	legend {
+		border: none;
+		margin-left: 0px;
+	}
+	.input-group {
+		float: left;
+		margin-left: 15px;
+	}
+}

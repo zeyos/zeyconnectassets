@@ -1,0 +1,47 @@
+[
+	{
+		"name": "Billing Transactions",
+		"endpoint": "billing",
+		"parts": [
+			["type", [
+				"quotes",
+				"orders",
+				"deliveries",
+				"invoices",
+				"credits"
+			]],
+			["func", [
+				"count",
+				"sum",
+				"min",
+				"max",
+				"avg"
+			]],
+			["column", [
+				"netamount",
+				"tax",
+				"margin",
+				"weight",
+				"discount"
+			]],
+			["segment", [
+				"all",
+				"day",
+				"week",
+				"month",
+				"year",
+				"account"
+			]]
+		],
+		"params": {
+			"keyformat": {
+				"description": "The format for date values. 'ms' for milliseconds, otherwise date format string"
+				"default": "null (for seconds)"
+			},
+			"status": {
+				"description": "The transaction status",
+				"default": "Only active"
+			}
+		}
+	}
+]

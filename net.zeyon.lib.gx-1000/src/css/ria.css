@@ -1,0 +1,81 @@
+/*****************************
+ * === gx.ria.Pages ===
+ *****************************/
+.gxRiaPages {
+	padding: 0px;
+	margin: 0px;
+}
+
+.gxRiaPagesPageBox {
+	width: 100%;
+	min-height: 100%;
+	height: 100%;
+	font-family: Arial;
+	background-color: #D6D6D8;
+}
+
+.gxRiaPagesMenu {
+	width: 100%;
+	empty-cells: show;
+}
+.gxRiaPagesMenu table{
+	font-size: 9pt;
+	text-shadow: 0px -1px 1px #000;
+	width: 100%;
+	height: 30px;
+	background: -moz-linear-gradient(top, rgb(111,111,111), rgb(72,72,72));
+	background: -webkit-gradient(linear,left top,left bottom,from(rgb(72,72,72)),to(rgb(111,111,111)));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6F6F6F', endColorstr='#484848');
+}
+
+.gxRiaPagesMenuIcon {
+	cursor: pointer;
+	padding: 0px;
+}
+
+.gxRiaPagesTM {
+
+}
+
+/* TM = TopMenu */
+.gxRiaPagesTMBack {
+	padding-left: 12px;
+	cursor: auto;
+}
+
+.gxRiaPagesTMBack a {
+	cursor: pointer;
+	padding: 2px 4px 2px 12px;
+	border: 1px solid #3D3D3F;
+	color: #FFF;
+	border-radius: 4px;
+	background: url(../img/ria/icoArrowLeft.gif) no-repeat left;
+}
+/* BM = BottomMenu */
+.gxRiaPagesBM {
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	height: 30px;
+}
+
+.gxRiaPagesLoader {
+	position: fixed;
+	width: 100%;
+	top: 10px;
+	display: none;
+}
+.gxRiaPagesLoader div {
+	width: 125px;
+	height: 15px;
+	margin: auto;
+	background: transparent url(../img/ria/loader.gif) no-repeat right;
+}
+.gxRiaPagesLoading {
+	display: block;
+}
+
+.gxRiaPagesBTEdit {
+	width: 30px;
+	background: url(../img/ria/icoSettings.png) no-repeat center;
+}

@@ -1,0 +1,660 @@
+@imgpath: '../img';
+
+.gxMessage {}
+
+.gxMessageBox {
+	background-color: #FFF;
+	border-left: 3px solid #CECECE;
+	border-right: 3px solid #CECECE;
+	border-bottom: 3px solid #CECECE;
+}
+
+.gxMessageInner {
+	background-repeat: no-repeat;
+	background-position: 7px 12px;
+	padding: 15px 10px 7px 30px;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.gxMessageStatus {
+	padding: 20px;
+	height: 30px;
+}
+
+.icoInfo { background-image: url('@{imgpath}/com/icoInfo.png'); }
+.icoSuccess { background-image: url('@{imgpath}/com/icoSuccess.png'); }
+.icoWarning { background-image: url('@{imgpath}/com/icoWarning.png'); }
+.icoError { background-image: url('@{imgpath}/com/icoError.png'); }
+.icoTip { background-image: url('@{imgpath}/com/icoTip.png'); }
+.icoPlus { background-image: url('@{imgpath}/com/icoPlus.png'); }
+.icoMinus { background-image: url('@{imgpath}/com/icoMinus.png'); }
+
+/*****************************
+ * === Notifications ===
+ *****************************/
+
+#notification_container_button {
+	position: relative;
+	background: url('@{imgpath}/com/notifier.png') no-repeat;
+	float:right;
+	width: 200px;
+	height: 34px;
+	padding: 10px 10px 5px 40px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #434343;
+	cursor: pointer;
+	text-align: left;
+	margin:-35px auto 0 auto;
+}
+
+#notification_wrapper {
+	left: 0;
+	bottom: 0;
+	position: fixed !important;
+	position: absolute;
+	width: 100%;
+	border: 1px solid #000000;
+	color: #000000;
+	background: #e0e0e8;
+	z-index: 900; /* Above gx.zfx.Jaw but below popups */
+	overflow:visible;
+
+	div.shadow {
+		background: url('@{imgpath}/com/shadow-bottom.png') repeat-x;
+		position:absolute;
+		left:0;
+		top:-6px;
+		width:100%;
+		height:5px;
+		z-index:1; /* Display above notification list */
+	}
+
+	#notification_container_button .expandicon {
+		float:right;
+		width:16px;
+		height:16px;
+		margin:0;
+		padding:0;
+		background: url('@{imgpath}/com/expand.png') no-repeat;
+	}
+
+	&.expanded #notification_container_button .expandicon {
+		background: url('@{imgpath}/com/collapse.png') no-repeat;
+	}
+}
+
+#notification_container_button_wrap {
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+}
+
+#notification_container {
+	overflow:auto;
+	height:auto;
+	max-height:100px;
+}
+
+#notification_list {
+	position: relative;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	border-collapse: separate;
+
+	&>tbody>tr {
+		&>td {
+			border:0;
+			margin: 0;
+			padding: 5px;
+			list-style: none;
+			text-indent: 0px;
+			height: auto;
+			text-align: left;
+			vertical-align:top;
+			width:100%;
+		}
+		&>td.title {
+			width:80px;
+			padding-left: 40px;
+			padding-right:10px;
+			margin: 0;
+			font-size:120%;
+			font-weight:bold;
+			white-space:nowrap;
+		}
+		&>td.text p {
+			margin-top:0;
+			margin-bottom:4px;
+			width:100%;
+		}
+
+		&.error {
+			background-color: #ffc0c0;
+		}
+		&.warning {
+			background-color: #ffffc0;
+		}
+		&.info {
+			background-color: #c0ffd0;
+		}
+
+		&.error>td {
+			border-bottom: 1px solid #ff0000;
+		}
+		&.warning>td {
+			border-bottom: 1px solid #f0e000;
+		}
+		&.info>td {
+			border-bottom: 1px solid #00c000;
+		}
+
+		&>td.title {
+			background-repeat: no-repeat;
+			background-position: 10px 5px;
+		}
+
+		&.error>td.title {
+			background-image: url('@{imgpath}/com/icoError.png');
+		}
+		&.warning>td.title {
+			background-image: url('@{imgpath}/com/icoWarning.png');
+		}
+		&.info>td.title {
+			background-image: url('@{imgpath}/com/icoInfo.png');
+		}
+	}
+}
+
+/*****************************
+ * === Status Bar ===
+ *****************************/
+
+.gxStatusbarFrame {
+	padding: 10px;
+}
+
+.gxStatusbarBar {
+	float: left;
+	background: url('@{imgpath}/com/gxStatusbar.gif') repeat-x;
+	height: 13px;
+}
+
+.gxStatusbarLabel {
+	clear: both;
+	padding: 10px;
+	font-style: italic;
+	font-size: 11px;
+	text-align: center;
+}
+
+.gxComTimePickerBox div {
+	float: left;
+}
+.gxComTimePickerBox select {
+	float: left;
+	margin: 0px;
+}
+.gxComTimePickerOk, .gxComTimePickerCancel {
+	width: 16px;
+	height: 16px;
+	cursor: pointer;
+	margin-top: 2px;
+}
+.gxComTimePickerOk {
+	background: url(@{imgpath}/com/icoAccept.png) no-repeat;
+}
+.gxComTimePickerCancel {
+	background: url(@{imgpath}/com/icoCancel.png) no-repeat;
+}
+
+
+/*****************************
+ * === SlimPicker Styles ===
+ *****************************/
+
+/* Styling for the input field */
+input.DatePicker{
+	background: #fff url(date.gif) no-repeat top left;
+	border: 1px solid #777;
+	border-bottom-color: #bbb;
+	border-right-color: #bbb;
+	cursor: pointer;
+}
+
+/* Styling for the calendar that shows up */
+.gxComDatePickerContainer{
+	font-family: Arial, Helvetica, sans-serif;
+	position: absolute;
+	padding: 0;
+	z-index: 500;
+/* These 4 will be set by the JS to match the input field */
+	height: 0;
+	left: 0;
+	top: 0;
+	width: 0;
+}
+.gxComDatePickerCalendar{
+	color: #222;
+	background: #ccc;
+	background: -moz-linear-gradient(top, rgb(230,230,230), rgb(200,200,200));
+	background: -webkit-gradient(linear,left top,left bottom,from(rgb(230,230,230)),to(rgb(200,200,200)));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#E6E6E6', endColorstr='#C8C8C8');
+	border: 1px solid #aaa;
+	border-bottom-color: #777;
+	border-right-color: #777;
+	width: 210px;
+	position: absolute;
+	box-shadow: #000 1px 1px 3px;
+	-webkit-box-shadow: #000 1px 1px 3px;
+	-moz-box-shadow: #000 1px 1px 3px;
+}
+.gxComDatePickerCalendar table{
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.gxComDatePickerCalendar select{
+	margin: 2px 3px;
+	font-size: 11px;
+}
+.gxComDatePickerCalendar select option{
+	padding: 1px 3px;
+}
+.gxComDatePickerCalendar th,
+.gxComDatePickerCalendar td{
+	width: 14.2857%;
+}
+.gxComDatePickerCalendar th{
+	background: #999;
+	background: -moz-linear-gradient(top, rgb(160,160,160), rgb(140,140,140));
+	background: -webkit-gradient(linear,left top,left bottom,from(rgb(160,160,160)),to(rgb(140,140,140)));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#A0A0A0', endColorstr='#8C8C8C');
+	color: #fff;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: center;
+	padding: 2px 0;
+	text-shadow: #555 1px 1px 0;
+}
+.gxComDatePickerCalendar thead th{
+	background: #ccc;
+	background: -moz-linear-gradient(top, rgb(230,230,230), rgb(200,200,200));
+	background: -webkit-gradient(linear,left top,left bottom,from(rgb(230,230,230)),to(rgb(200,200,200)));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#E6E6E6', endColorstr='#C8C8C8');
+}
+.gxComDatePickerCalendar td a{
+	display: block;
+	font-size: 11px;
+	padding: 2px 0;
+	text-align: center;
+	width: 100%;
+	text-shadow: #ddd 1px 1px 0;
+}
+.gxComDatePickerCalendar .gxComDatePickerBackArrow, .gxComDatePickerCalendar .gxComDatePickerNextArrow {
+	display: block;
+	cursor: pointer;
+	height: 32px;
+}
+.gxComDatePickerCalendar .gxComDatePickerBackArrow:hover, .gxComDatePickerCalendar .gxComDatePickerNextArrow:hover {
+}
+.gxComDatePickerCalendar .gxComDatePickerBackArrow {
+	background: url(@{imgpath}/com/icoArrowLeft.png) no-repeat left;
+}
+.gxComDatePickerCalendar .gxComDatePickerNextArrow {
+	background: url(@{imgpath}/com/icoArrowRight.png) no-repeat right;
+}
+.gxComDatePickerEmpty{
+	background: #aaa;
+}
+.gxComDatePickerToday{
+	background: #bbb;
+}
+.gxComDatePickerSelected{
+	background: #f5f5f5;
+}
+.gxComDatePickerHover,
+.gxComDatePickerHover a{
+	background: #EF8868;
+	color: #000;
+	text-shadow: #752e0b 1px 1px 0;
+}
+
+/*****************************
+ * === Advanced Select styles ===
+ *****************************/
+
+.gxComSelectInputText {
+	padding-left: 18px;
+	background: #FFF url(@{imgpath}/com/icoSelectExpand.gif) no-repeat center left;
+}
+
+.gxComSelectInputArea {
+	margin: 0px;
+	font-family: monospace;
+	font-size: 13px;
+	font-weight: 400;
+	font-style: normal;
+	padding-left: 18px;
+	background: #FFF url(@{imgpath}/com/icoSelectExpand.gif) no-repeat left top;
+}
+
+.gxComSelectUl {
+	list-style: none inside;
+	padding: 4px;
+	margin: 0px;
+	background: #FFF;
+	border: 1px solid #999;
+	overflow-y: scroll;
+}
+.gxComSelectLi {
+	padding: 0px 5px;
+	cursor: pointer;
+}
+.gxComSelectLi:hover {
+	text-decoration: underline;
+}
+.gxComSelectSelected {
+	background: #3399FF;
+	color: #FFF;
+}
+
+.gxComSelectAccept {
+	width: 16px;
+	height: 16px;
+	left: 3px;
+	background: url(@{imgpath}/com/icoAccept.png) no-repeat;
+	position: absolute;
+	cursor: pointer;
+}
+.gxComSelectSearchImg {
+	width: 16px;
+	height: 16px;
+	background: url(@{imgpath}/com/icoSearch.png) no-repeat;
+	cursor: pointer;
+	display: inline-block;
+	margin-left: 4px;
+	margin-top: 4px;
+	vertical-align: top;
+}
+
+
+/* ProgressBar
+-------------------------------------------------------------------- */
+.gxComProgressBar {
+	width: 100%;
+	height: 18px;
+	border: 2px solid #999;
+
+	background: -moz-linear-gradient(top, rgb(105,152,180), rgb(125,175,200));
+	background: -webkit-gradient(linear,left top,left bottom,from(rgb(105,152,180)),to(rgb(125,175,200)));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#484848', endColorstr='#6998B4');
+
+	background-color: #CCC;
+
+	box-shadow: inset #000 1px 1px 3px;
+	-webkit-box-shadow: inset #000 1px 1px 3px;
+	-moz-box-shadow: inset #666 1px 1px 1px;
+
+	border-radius: 8px;
+	margin: auto;
+}
+.gxComProgressBar .bar {
+    overflow: visible;
+	height: inherit;
+	background: -moz-linear-gradient(top, rgb(150,200,150), rgb(105,152,180));
+	background: -webkit-gradient(linear,left top,left bottom,from(rgb(125,175,125)),to(rgb(105,140,105)));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6998B4', endColorstr='#484848');
+
+	box-shadow: #000 1px 1px 3px;
+	-webkit-box-shadow: #000 1px 1px 3px;
+	-moz-box-shadow: #555 2px 0px 1px;
+	border-radius: 6px;
+}
+.gxComProgressBarText {
+	white-space: nowrap;
+	vertical-align: top;
+    color: #EEE;
+	font-family: "Arial Black";
+	font-weight: 900;
+	text-shadow: 1px 1px 1px #333;
+	text-align: center;
+	margin: 0px 0px;
+	position: absolute;
+	height: inherit;
+}
+
+/* Wizard
+-------------------------------------------------------------------- */
+.gxComWizard.dialog {
+	position: relative;
+	width: 100%;
+	/* padding will be set with javascript */
+/*
+	background-color: #ffffff;
+	border: 1px solid #ddd;
+	*border: 1px solid #ddd;
+	margin-bottom: 6px;
+	-webkit-border-radius: 6px;
+	   -moz-border-radius: 6px;
+			border-radius: 6px;
+	outline: none;
+	-webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+	   -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+			box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+	-webkit-background-clip: padding-box;
+	   -moz-background-clip: padding-box;
+			background-clip: padding-box;
+*/
+}
+
+.gxComWizard > .title {
+	position: absolute;
+	right: -1px;
+	padding: 7px 17px;
+	font-weight: bold;
+	font-size: 15pt;
+	background-color: #f5f5f5;
+	border: 1px solid #ddd;
+	color: #9da0a4;
+	-webkit-border-radius: 0 4px 0 4px;
+	   -moz-border-radius: 0 4px 0 4px;
+			border-radius: 0 4px 0 4px;
+
+}
+
+.gxComWizard .viewer {
+	overflow: hidden;
+}
+
+.gxComWizard .pages {
+	position: relative;
+}
+
+.gxComWizard .page {
+	float: left;
+}
+
+.gxComWizard .paging {
+	text-align: center;
+	position: relative;
+}
+
+.gxComWizard hr {
+	margin: 0px 0px;
+}
+
+.gxComWizard .paging .buttons {
+	position: absolute;
+}
+
+.gxComWizard .paging .buttons .back {
+	float: left;
+}
+
+.gxComWizard .paging .buttons .next {
+	float: right;
+}
+
+.gxComWizard .paging table{
+	margin: auto;
+	margin-top: 9px;
+}
+.gxComWizard .paging .item {
+	min-width: 100px;
+}
+.gxComWizard .paging .title {
+
+}
+.gxComWizard .paging .pointer {
+	cursor: pointer;
+}
+.gxComWizard .paging .item:hover .title {
+  color: #005580;
+  text-decoration: underline;
+
+}
+.gxComWizard .paging .point {
+	margin: auto;
+	width: 10px;
+	height: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+
+	background-color: #f5f5f5;
+	*background-color: #e6e6e6;
+	background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+	background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+	background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+	background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+	background-repeat: repeat-x;
+	border: 1px solid #bbbbbb;
+	*border: 0;
+	border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	border-bottom-color: #a2a2a2;
+	-webkit-border-radius: 4px;
+	   -moz-border-radius: 4px;
+			border-radius: 4px;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+	*zoom: 1;
+	-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+	   -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+			box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.gxComWizard .paging .item.active .point,
+.gxComWizard .paging .item:hover .point {
+	color: #333333;
+	text-decoration: none;
+	background-color: #e6e6e6;
+	*background-color: #d9d9d9;
+	/* Buttons in IE7 don't get borders, so darken on hover */
+
+	background-position: 0 -15px;
+	-webkit-transition: background-position 0.1s linear;
+	   -moz-transition: background-position 0.1s linear;
+		 -o-transition: background-position 0.1s linear;
+			transition: background-position 0.1s linear;
+
+
+	background-color: #006dcc;
+	*background-color: #0044cc;
+	background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
+	background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+	background-image: -o-linear-gradient(top, #0088cc, #0044cc);
+	background-image: linear-gradient(to bottom, #0088cc, #0044cc);
+	background-repeat: repeat-x;
+	border-color: #0044cc #0044cc #002a80;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+.gxComWizard .paging .item:focus .point {
+	outline: thin dotted #333;
+	outline: 5px auto -webkit-focus-ring-color;
+	outline-offset: -2px;
+}
+
+/* Slider
+-------------------------------------------------------------------- */
+.slider {
+	display: inline-block;
+	float: left;
+	margin: 5px 0px;
+	position: relative;
+	height: 20px;
+	margin-bottom: 20px;
+	background-color: #f7f7f7;
+	background-image: -moz-linear-gradient(top, #f5f5f5, #f9f9f9);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f5f5f5), to(#f9f9f9));
+	background-image: -webkit-linear-gradient(top, #f5f5f5, #f9f9f9);
+	background-image: -o-linear-gradient(top, #f5f5f5, #f9f9f9);
+	background-image: linear-gradient(to bottom, #f5f5f5, #f9f9f9);
+	background-repeat: repeat-x;
+	-webkit-border-radius: 4px;
+	   -moz-border-radius: 4px;
+			border-radius: 4px;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#fff9f9f9', GradientType=0);
+	-webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+	   -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+			box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.slider .bar {
+	float: left;
+	width: 10px;
+	height: 100%;
+	font-size: 12px;
+	color: #ffffff;
+	text-align: center;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	background-color: #0e90d2;
+	background-image: -moz-linear-gradient(top, #149bdf, #0480be);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#149bdf), to(#0480be));
+	background-image: -webkit-linear-gradient(top, #149bdf, #0480be);
+	background-image: -o-linear-gradient(top, #149bdf, #0480be);
+	background-image: linear-gradient(to bottom, #149bdf, #0480be);
+	background-repeat: repeat-x;
+	-webkit-border-radius: 4px;
+	   -moz-border-radius: 4px;
+			border-radius: 4px;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff149bdf', endColorstr='#ff0480be', GradientType=0);
+	-webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+	   -moz-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+			box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+			box-sizing: border-box;
+}
+.slider .knob {
+	position: absolute;
+	cursor: pointer;
+	margin-top: -4px;
+	width: 12px;
+	height: 28px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-width: 1px;
+	border-color: #696e74 #696e74 #8d959f;
+	border-style: solid;
+	background-color: #e6e6e6;
+	background-repeat: no-repeat;
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), color-stop(25%, #ffffff), to(#e6e6e6));
+	background-image: -webkit-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+	background-image: -moz-linear-gradient(top, #ffffff, #ffffff 25%, #e6e6e6);
+	background-image: -ms-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+	background-image: -o-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+	background-image: linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
+
+}

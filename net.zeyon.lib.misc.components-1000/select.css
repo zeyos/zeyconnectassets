@@ -1,0 +1,169 @@
+.combobox select {
+	border-radius: 4px;
+    padding: 3px 0px;
+    box-shadow: none;
+    border: 1px solid #aaa;
+}
+fieldset.sel {
+  	width: initial;
+}
+body > fieldset.sel {
+  	width: 100%;
+}
+input.form-control.acc {
+	width: 100%;
+}
+input.form-control.cat {
+	width: 120px;
+	display: inline-block;
+}
+fieldset:not(:first-child) > input.form-control.cat {
+	margin-left: 5px;
+}
+div > fieldset:not(:first-child) > section {
+   	margin-left: 5px;
+   	width: 120px;
+}
+   
+
+.combobox {	
+	/*margin-right: 40px;
+	margin-bottom: 20px;*/
+	display: inline-block;
+	position: relative;
+	top: -1px;
+	margin-top: 1px;
+	box-sizing: border-box;
+}
+
+.combobox * {	
+	box-sizing: border-box;
+	font-size: 1em;
+	font-weight: normal;
+}
+
+.combobox > input {
+	padding: 0px 7px;
+	height: 28px;
+	border: 1px solid #bbbbbb;
+	padding-right: 25px;
+}
+
+.combobox > input[readonly] {
+	cursor: pointer;
+}
+
+.combobox > input.unlabeled {	
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.combobox > input.labeled {	
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+	box-shadow: 0px 1px 2px #8f8f8f;
+}
+
+.combobox > .options {
+	position: absolute;
+	right: 0px;
+	padding: 2px 3px;
+	margin-top: -2px;
+	border: 1px #d4d4d4 solid;
+	border-top: 2px #d4d4d4 solid;
+	background-color: #ffffff;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+	box-shadow: 0px 3px 3px rgba(144,144,144,0.5);
+	cursor: pointer;
+	z-index: 100;
+	max-height: 300px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	text-align: left;
+}
+
+.combobox > .options.inverted {
+	bottom: 0;
+	margin-bottom: 28px;
+	box-shadow: 0px 0px 2px #8f8f8f;
+}
+
+.combobox > .options > table {
+	width: 100%;
+	table-layout: fixed;
+}
+
+.combobox > .options > table > tr > td > img {
+	padding-right: 5px;
+}
+
+.combobox > .options td > div {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;	
+	min-height: 15px;
+}
+
+.combobox > .options > table > tr:hover {
+	background-color: #f3f3f3;
+}
+
+.combobox > div.symbol {
+	position	: absolute;
+	margin-top	: 4px;
+	right		: 5px;
+	padding		: 2px 3px;
+	cursor		: pointer;
+	color		: #777777;
+	border		: 1px solid #bbbbbb;
+	font-size	: 9px;
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;
+	border-radius: 1px;
+	background-image: -moz-linear-gradient(center top , #FAFAFA, #EEEEEE);
+	background-image: -webkit-linear-gradient(top, #EEEEEE 0%, #FAFAFA 100%);
+	background-image: -ms-linear-gradient(top, #EEEEEE 0%, #FAFAFA 100%);
+	background-image: linear-gradient(to top, #EEEEEE 0%, #FAFAFA 100%);	
+}
+
+.combobox > div.quickreset {
+	position	: absolute;
+	margin-top	: 4px;
+	right		: 27px;
+	padding		: 2px 3px;
+	cursor		: pointer;
+	color		: #BBBBBB;
+	font-size	: 11px;
+}
+
+.search {	
+	/*margin-right: 40px;
+	margin-bottom: 20px;*/
+	display: inline-block;
+}
+
+.search > input {
+	padding: 0px 7px;
+	height: 28px;
+	border: 1px solid #bbbbbb;
+	-webkit-box-shadow: 0px 1px 2px #8f8f8f;
+	-moz-box-shadow: 0px 1px 2px #8f8f8f;
+	box-shadow: 0px 1px 2px #8f8f8f;
+}
+
+.search > input.standalone {	
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.search > input:not(.standalone) {	
+	-webkit-border-top-right-radius: 4px;
+	-webkit-border-bottom-right-radius: 4px;
+	-moz-border-radius-topright: 4px;
+	-moz-border-radius-bottomright: 4px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}

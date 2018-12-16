@@ -1,0 +1,113 @@
+@imgpath: '../img';
+
+@import 'common.less';
+
+.gxUiBlendLoader {
+	background: url('@{imgpath}/ui/gxUiBlendLoader.gif') no-repeat center;
+}
+
+/*****************************
+ * === gx.ui.List ===
+ *****************************/
+
+.gxUiListUl {
+	padding: 0px;
+	margin: 0px;
+}
+
+.gxUiListUl .gxRiaListLi {
+	padding: 0px;
+	margin: 0px;
+	display: block;
+	list-style: none;
+}
+
+
+/*****************************
+ * === gx.ui.OC_Container ===
+ *****************************/
+ .gxUiOCContainer {
+	&.dnone {display: none;}
+	&.dblock {display: block;}
+
+ 	&.fading {
+		.transition(opacity, 500ms, ease);
+
+		opacity: 0;
+		&.active {opacity: 1;}
+ 	}
+
+ 	&.sliding {
+		overflow: hidden;
+ 	}
+ }
+
+/*****************************
+ * === gx.ui.EffectBox ===
+ *****************************/
+.gxUiEffectBox {
+	.cube {
+		/* example width and height
+		   should be set from you by your content class
+		*/
+		height: 200px;
+		width: 200px;
+	}
+
+	.content {
+		height: 100%;
+		width: 100%;
+	}
+}
+.gxUiEffectBoxEffect.hover.eonhover {
+    position: relative;
+    overflow: hidden;
+
+    >.eto.hover {
+        .transition(top, 300ms, ease-in-out);
+        position: absolute;
+        top: 100%;
+    }
+    &:hover >.eto.hover { top: 0%; }
+}
+
+.gxUiEffectBoxEffect.push.eonhover {
+    position: relative;
+    overflow: hidden;
+
+    >.efrom {
+        position: absolute;
+        .transition(top, 300ms, ease-in-out);
+        top: 0%;
+    }
+    >.eto {
+        .transition(top, 300ms, ease-in-out);
+        position: absolute;
+        top: 100%;
+    }
+    &:hover >.efrom { top: -100%; }
+    &:hover >.eto { top: 0%; }
+}
+
+
+.gxUiEffectBoxEffect.fade.eonhover {
+    position: relative;
+    overflow: hidden;
+    opacity: 1; /*overriding bootstrap */
+
+    >.efrom, >.eto.fade {
+        position: absolute;
+        .transition(opacity, 300ms, ease-in-out);
+        top: 0px;
+        left: 0px;
+    }
+    >.efrom {
+        opacity: 1;
+    }
+    >.eto.fade {
+        opacity: 0.000000001;
+    }
+    &.active { display: block; }
+    &:hover >.eto.fade { opacity: 1; }
+    &:hover >.efrom { opacity: 0.000000001; }
+}
